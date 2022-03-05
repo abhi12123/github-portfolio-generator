@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export default function Preview({ data }) {
+export default function Preview() {
+  const data = useSelector(state=>state.filledData.value);
   return (
     <div className="w3-black" id="portfolio-website" style={{ position: "relative" }}>
       <div
