@@ -14,7 +14,7 @@ function App() {
       <div className="w3-col s12 l3 m3">
         <DataFields/>
       </div>
-      <div className="w3-col s12 l9 m9">
+      <div className="w3-col s12 l9 m9 w3-border w3-border-black">
         <Preview/>
       </div>
     </div>
