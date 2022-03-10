@@ -49,9 +49,11 @@ export default function Preview() {
       <div className="w3-padding-large" id="main">
         <header className="w3-container w3-padding-32 w3-center" id="home">
           <h1 className="w3-jumbo">{data.name}</h1>
+          <h5 className="">{data.website}</h5>
           <p>{data.bio}</p>
+          <p>{data.location}</p>
           <img
-            src={data.avatar_url}
+            src={data.profilePic}
             alt="boy"
             className="w3-image w3-circle"
             width="200"
@@ -67,7 +69,7 @@ export default function Preview() {
             </p>
             <p>
               <i className="fa-brands fa-github fa-fw w3-text-brown w3-xxlarge w3-margin-right w3-margin-left"></i>{" "}
-              {data.login}
+              {data.github_username}
             </p>
             <p>
               <i className="fa-solid fa-blog fa-fw w3-text-brown w3-xxlarge w3-margin-right w3-margin-left">

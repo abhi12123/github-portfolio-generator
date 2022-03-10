@@ -1,18 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ImageInput from "./ImageInput";
 import TextInput from "./TextInput";
 
 export default function DataFields({ setData }) {
-  const filledData = useSelector(state=>state.filledData.value);
-
-  const handleChangeForm = (e) => {
-    //dispatch change form
-
-    // setForm({
-    //   ...form,
-    //   [e.target.name]: e.target.value,
-    // });
-  };
+  const filledData = useSelector((state) => state.filledData.value);
 
   const download = () => {
     const beg = `<!DOCTYPE html>
@@ -45,52 +37,18 @@ export default function DataFields({ setData }) {
   return (
     <>
       <form className="w3-margin w3-left">
-        <TextInput
-          labelText="Name"
-          name="name"
-        />
-        
-        <TextInput
-          labelText="Bio"
-          name="bio"
-        />
-
-        <div className="w3-col l12 m12 s12">
-          <label htmlFor="bio" className="w3-small">
-            Profile image src
-          </label>
-          <input
-            name="profilePic"
-            value={filledData.profilePic}
-            className="w3-input w3-border"
-            onChange={(e) => handleChangeForm(e)}
-          ></input>
-          <img src={filledData.profilePic} className="w3-circle w3-image w3-col l6 m6 s6"></img>
-          <img src={filledData.profilePic} className="w3-circle w3-image w3-col l6 m6 s6"></img>
-        </div>
-
-        <TextInput
-          labelText="Blog"
-          name="blog"
-        />
-        <TextInput
-          labelText="Github"
-          name="github"
-        />
-        <TextInput
-          labelText="Company"
-          name="company"
-        />
-        <TextInput
-          labelText="Email"
-          name="email"
-        />
-        <TextInput
-          labelText="Twitter"
-          name="twitter_username"
-        />
+        <TextInput labelText="Name" name="name" />
+        <TextInput labelText="Website" name="website" />
+        <TextInput labelText="Bio" name="bio" />
+        <ImageInput labelText="Profile Pic" name="profilePic" />
+        <TextInput labelText="Location" name="location" />
+        <TextInput labelText="Blog" name="blog" />
+        <TextInput labelText="Github" name="github_username" />
+        <TextInput labelText="Twitter" name="twitter_username" />
+        <TextInput labelText="Company" name="company" />
+        <TextInput labelText="Email" name="email" />
       </form>
-      <div style={{ textAlign: "center" }} className='w3-pale-green'>
+      <div style={{ textAlign: "center" }} className="w3-pale-green">
         <button
           className={`w3-green w3-round w3-button w3-ripple w3-margin`}
           onClick={() => download()}
