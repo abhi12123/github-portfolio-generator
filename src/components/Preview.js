@@ -319,9 +319,9 @@ export default function Preview() {
               Send email
             </a>
             <div className="w3-center w3-xxlarge w3-margin-top">
-              <i class="fa-brands fa-linkedin-in w3-btn"></i>
-              <i class="fa-brands fa-twitter w3-btn"></i>
-              <i class="fa-brands fa-instagram w3-btn"></i>
+              <i className="fa-brands fa-linkedin-in w3-btn"></i>
+              <i className="fa-brands fa-twitter w3-btn"></i>
+              <i className="fa-brands fa-instagram w3-btn"></i>
             </div>
           </div>
         </div>

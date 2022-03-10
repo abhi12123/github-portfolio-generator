@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import InputComp from "./InputComp";
+import TextInput from "./TextInput";
 
 export default function DataFields({ setData }) {
   const filledData = useSelector(state=>state.filledData.value);
 
   const handleChangeForm = (e) => {
-    console.log(e)
     //dispatch change form
 
     // setForm({
@@ -46,55 +45,47 @@ export default function DataFields({ setData }) {
   return (
     <>
       <form className="w3-margin w3-left">
-        <InputComp
+        <TextInput
           labelText="Name"
           name="name"
         />
-        <div className="w3-col l12 m12 s12">
-          <label htmlFor="bio" className="w3-small">
-            bio
-          </label>
-          <textarea
-            name="bio"
-            value={filledData.bio}
-            className="w3-input w3-border"
-            onChange={(e) => {
-              handleChangeForm(e);
-            }}
-            rows="2"
-          ></textarea>
-        </div>
+        
+        <TextInput
+          labelText="Bio"
+          name="bio"
+        />
 
         <div className="w3-col l12 m12 s12">
           <label htmlFor="bio" className="w3-small">
             Profile image src
           </label>
           <input
-            name="avatar_url"
-            value={filledData.avatar_url}
+            name="profilePic"
+            value={filledData.profilePic}
             className="w3-input w3-border"
             onChange={(e) => handleChangeForm(e)}
           ></input>
-          <img src={filledData.avatar_url} className="w3-circle w3-image w3-col l6 m6 s6"></img>
+          <img src={filledData.profilePic} className="w3-circle w3-image w3-col l6 m6 s6"></img>
+          <img src={filledData.profilePic} className="w3-circle w3-image w3-col l6 m6 s6"></img>
         </div>
 
-        <InputComp
+        <TextInput
           labelText="Blog"
           name="blog"
         />
-        <InputComp
+        <TextInput
           labelText="Github"
-          name="html_url"
+          name="github"
         />
-        <InputComp
+        <TextInput
           labelText="Company"
           name="company"
         />
-        <InputComp
+        <TextInput
           labelText="Email"
           name="email"
         />
-        <InputComp
+        <TextInput
           labelText="Twitter"
           name="twitter_username"
         />

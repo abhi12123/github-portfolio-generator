@@ -3,18 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export const filledDataSlice = createSlice({
   name: "filledData",
   initialState: {
-    value: {
-      name: "John Doe",
-      avatar_url: "https://i.pravatar.cc/300",
-      bio: `Web Developer`,
-    },
+    value: {},
   },
   reducers: {
-    setData: (state, action) => {
-      state.value = action.payload;
+    setFilledData: (state, action) => {
+      state.value = {...state.value,...action.payload};
     },
   },
 });
 
-export const { setData } = filledDataSlice.actions;
+export const { setFilledData } = filledDataSlice.actions;
 export default filledDataSlice.reducer;
