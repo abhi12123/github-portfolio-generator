@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ArrayInput from "./ArrayInput";
 import ImageInput from "./ImageInput";
+import TextAreaInput from "./TextAreaInput";
 import TextInput from "./TextInput";
 
 export default function DataFields({ setData }) {
@@ -39,7 +41,8 @@ export default function DataFields({ setData }) {
       <form className="w3-margin w3-left">
         <TextInput labelText="Name" name="name" />
         <TextInput labelText="Website" name="website" />
-        <TextInput labelText="Bio" name="bio" />
+        <TextAreaInput labelText="Bio" name="bio" />
+        <TextAreaInput labelText="About me" name="about_me" />
         <ImageInput labelText="Profile Pic" name="profilePic" />
         <TextInput labelText="Location" name="location" />
         <TextInput labelText="Blog" name="blog" />
@@ -47,8 +50,9 @@ export default function DataFields({ setData }) {
         <TextInput labelText="Twitter" name="twitter_username" />
         <TextInput labelText="Company" name="company" />
         <TextInput labelText="Email" name="email" />
+        <ArrayInput labelText="Skills" name="skills" />
       </form>
-      <div style={{ textAlign: "center" }} className="w3-pale-green">
+      <div style={{ textAlign: "center" }} className="w3-pale-blue">
         <button
           className={`w3-green w3-round w3-button w3-ripple w3-margin`}
           onClick={() => download()}

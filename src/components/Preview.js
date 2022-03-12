@@ -80,22 +80,13 @@ export default function Preview() {
           </div>
         </header>
 
-        <div className="w3-content w3-justify" id="about">
+        {data.about_me && <div className="w3-content w3-justify" id="about">
           <h2 className="">About me</h2>
           <p style={{ textIndent: "100px" }} className="w3-text-dark-grey">
-            {`Hello! My name is ${data.name} and I enjoy creating things that live on
-            the internet. My interest in web development started back in 2012
-            when I decided to try editing custom Tumblr themes — turns out
-            hacking together a custom reblog button taught me a lot about HTML &
-            CSS! Fast-forward to today, and I’ve had the privilege of working at
-            an advertising agency, a start-up, a huge corporation, and a
-            student-led design studio. My main focus these days is building
-            accessible, inclusive products and digital experiences at
-            Upstatement for a variety of clients. I also recently launched a
-            course that covers everything you need to build a web app with the
-            Spotify API using Node & React.`}
+            {data.about_me}
           </p>
-        </div>
+        </div>}
+
         <div className="w3-content w3-justify ">
           <h2 className="w3-padding-top-64">My Skills</h2>
           <div className="w3-row">

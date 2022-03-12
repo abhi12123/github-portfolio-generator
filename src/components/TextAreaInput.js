@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilledData } from "../redux/filledDataSlice";
 
-export default function TextInput({ labelText, name }) {
+export default function TextAreaInput({ labelText, name }) {
   const filledData = useSelector((state) => state.filledData.value);
   const githubData = useSelector((state) => state.githubData.value);
   const devtoData = useSelector((state) => state.devtoData.value);
@@ -13,13 +13,14 @@ export default function TextInput({ labelText, name }) {
       <label className="w3-small" htmlFor={name}>
         {labelText} :{" "}
       </label>
-      <input
+      <textarea
         name={name}
         value={filledData[name]}
+        rows='3'
         className="w3-input w3-border"
         onChange={(e) => dispatch(setFilledData({ [name]: e.target.value }))}
-        style={{ height: 25, fontSize: 12 }}
-      ></input>
+        style={{ fontSize: 12 }}
+      ></textarea>
       <div style={{display:'flex',flexWrap:'wrap'}}>
         {githubData[name] && (
           <div

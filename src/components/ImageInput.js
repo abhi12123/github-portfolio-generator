@@ -9,7 +9,7 @@ export default function ImageInput({ labelText, name }) {
 
   const dispatch = useDispatch();
   return (
-    <div className="w3-col l12 m12 s12">
+    <div className="w3-col l12 m12 s12 w3-card w3-padding w3-white w3-margin-bottom">
       <label className="w3-small" htmlFor={name}>
         {labelText} :{" "}
       </label>
@@ -18,31 +18,34 @@ export default function ImageInput({ labelText, name }) {
         value={filledData[name]}
         className="w3-input w3-border"
         onChange={(e) => dispatch(setFilledData({ [name]: e.target.value }))}
+        style={{height:25,fontSize:12}}
       ></input>
-      <div className='w3-cell-row w3-padding-small '>
+      <div style={{display:'flex',flexWrap:'wrap'}}>
       {githubData[name] && (
         <div
             style={{ marginTop: "5px",width:'fit-content',cursor:'pointer' }}
-            className="w3-green w3-padding-small w3-round-xlarge w3-margin-left w3-cell"
+            className="w3-border w3-hover-white w3-margin-left w3-hover-shadow"
             onClick={()=>dispatch(setFilledData({[name]:githubData[name]}))}
           >
-            <i className="w3-large w3-margin-right fa-brands fa-github w3-cell"></i>
+            <i className="w3-large fa-brands fa-github w3-display-position w3-white w3-round" style={{padding:'4px'}}></i>
             <img
             src={githubData[name]}
-            className="w3-circle w3-image"
+            style={{padding:4}}
+            width='100'
           ></img>
           </div>
       )}
       {devtoData[name] && (
         <div
-          style={{ marginTop: "5px",width:'fit-content',cursor:'pointer' }}
-          className="w3-orange w3-padding-small w3-round-xlarge w3-margin-left w3-cell"
+          style={{ marginTop: "5px",marginLeft:'5px',width:'fit-content',cursor:'pointer' }}
+          className="w3-border w3-hover-white w3-hover-shadow"
           onClick={()=>dispatch(setFilledData({[name]:devtoData[name]}))}
         >
-          <i className="w3-large w3-margin-right fa-brands fa-dev"></i>
+          <i className="w3-large fa-brands fa-dev w3-display-position w3-white w3-round" style={{padding:'4px'}}></i>
           <img
-            src={devtoData[name]}
-            className="w3-circle w3-image"
+            src={githubData[name]}
+            style={{padding:4}}
+            width='100'
           ></img>
         </div>
       )}

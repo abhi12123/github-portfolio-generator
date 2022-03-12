@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setDevtoData } from "../redux/devtoDataSlice";
 import { setGithubData } from "../redux/githubDataSlice";
+import ArrayInput from "./ArrayInput";
 
 export default function GenerateData() {
   const [githubId, setGithubId] = useState(undefined);
   const [devtoId, setDevtoId] = useState(undefined);
-const dispatch = useDispatch();
+  const [githubSpinner, setGithubSpinner] = useState(false);
+  const [devtoSpinner, setDevtoSpinner] = useState(false);
+  const dispatch = useDispatch();
   const populateGithubData = (data) => {
     const {
       avatar_url,
@@ -62,21 +65,28 @@ const dispatch = useDispatch();
 
   const generateData = async (e) => {
     e.preventDefault();
+    setGithubSpinner(true);
+    setDevtoSpinner(true);
     try {
-      const githubResp = await axios.get(
+      const githubResp = githubId && await axios.get(
         `https://api.github.com/users/${githubId}`
       );
       populateGithubData(githubResp.data);
+      setGithubSpinner(false)
     } catch (error) {
       alert("cannot find user with the given github id");
+      setGithubSpinner(false)
     }
     try {
-      const devtoResp = await axios.get(
+      console.log(devtoId)
+      const devtoResp = devtoId && await axios.get(
         `https://dev.to/api/users/by_username?url=${devtoId}`
       );
       populateDevtoData(devtoResp.data);
+      setDevtoSpinner(false);
     } catch (error) {
       alert("cannot find user with the given devto id");
+      setDevtoSpinner(false);
     }
   };
 
@@ -85,23 +95,35 @@ const dispatch = useDispatch();
       <label htmlFor="login">
         Enter a Github Id <i className="fa-brands fa-github w3-xlarge"></i>{" "}
       </label>
-      <input
-        name="login"
-        className="w3-input w3-content"
-        onChange={(e) => setGithubId(e.target.value)}
-        style={{ maxWidth: "350px" }}
-      ></input>
+      {githubSpinner ? (
+        <div>
+          <i className="fas fa-spinner"></i>
+        </div>
+      ) : (
+        <input
+          name="login"
+          className="w3-input w3-content"
+          onChange={(e) => setGithubId(e.target.value)}
+          style={{ maxWidth: "350px" }}
+        ></input>
+      )}
       <i className="w3-italics">or</i>
       <br />
       <label htmlFor="login">
         Enter a Devto Id <i className="fab fa-dev  w3-xlarge"></i>{" "}
       </label>
-      <input
-        name="login"
-        className="w3-input w3-content"
-        onChange={(e) => setDevtoId(e.target.value)}
-        style={{ maxWidth: "350px" }}
-      ></input>
+      {devtoSpinner ? (
+        <div>
+          <i className="fas fa-spinner"></i>
+        </div>
+      ) : (
+        <input
+          name="login"
+          className="w3-input w3-content"
+          onChange={(e) => setDevtoId(e.target.value)}
+          style={{ maxWidth: "350px" }}
+        ></input>
+      )}
       <button
         type="submit"
         className="w3-green w3-round w3-button w3-ripple w3-margin"
